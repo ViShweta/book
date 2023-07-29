@@ -1,0 +1,24 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Book Details
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{ book.Title }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Author: {{ book.Author }}</p>
+      <p>Price: {{ book.Price }}</p>
+    </ion-card-content>
+    <ion-button (click)="addToCart(book)">Add To Cart</ion-button>
+   
+  </ion-card>
+</ion-content>

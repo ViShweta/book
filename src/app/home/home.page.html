@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      All Book list 
+    </ion-title>
+    <ion-col size="6">
+      <ion-icon name="menu" (click)="presentActionSheet()"></ion-icon>
+    </ion-col>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-searchbar [debounce]="1000" (ionInput)="handleInput($event)"></ion-searchbar>
+  
+  <!-- <ng-container *ngIf="showbook.length == 0">
+    <p>Author not found</p>
+  </ng-container> -->
+
+  <ion-card *ngFor="let book of showbook"(click)="goTo(book)">
+    <ion-card-header>
+      <ion-card-title>{{ book.Title }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Author: {{ book.Author }}</p>
+      <p>Price: {{ book.Price }}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+

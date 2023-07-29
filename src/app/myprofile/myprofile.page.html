@@ -1,0 +1,24 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      My Profile
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{ login_data.firstName }} {{ login_data.lastName }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Email: {{ login_data.email }}</p>
+    </ion-card-content>
+    <ion-footer>
+      <ion-button expand="full" (click)="goToEdit(login_data)">Edit Profile</ion-button>
+    </ion-footer>
+  </ion-card>
+</ion-content>

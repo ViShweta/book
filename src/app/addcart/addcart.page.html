@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Shopping Cart
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngIf="addbook && addbook.length > 0">
+    <ion-item *ngFor="let book of addbook; let i = index">
+      <ion-label>
+        <h2>{{ book.title }}</h2>
+        <p>Author: {{ book.Title }}</p>
+      </ion-label>
+      <ion-button (click)="decreaseQuantity(book)">
+        <ion-icon name="remove"></ion-icon>
+      </ion-button>
+      <ion-label>{{ book.quantity }}</ion-label>
+      <ion-button (click)="increaseQuantity(book)">
+        <ion-icon name="add"></ion-icon>
+      </ion-button>
+      <ion-button color="danger" (click)="deleteItem(i)">
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="addbook && addbook.length == 0">
+    <ion-item>
+      <ion-label>
+        Your cart is empty.
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
