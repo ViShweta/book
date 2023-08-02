@@ -19,6 +19,10 @@ export class MyprofilePage implements OnInit {
     };
     this.router.navigate(['/edit'], { queryParams });
   }
+  ionViewWillEnter(){
+    this.login_data = JSON.parse(localStorage.getItem('LoginUser') as any);
+    console.log(this.login_data);
+  }
 
   ngOnInit() {
     this.login_data = JSON.parse(localStorage.getItem('LoginUser') as any);

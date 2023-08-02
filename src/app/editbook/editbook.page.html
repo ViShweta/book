@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Add Book
+  Edit Book
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,35 +9,36 @@
 <ion-content>
   <ion-card>
     <ion-card-content>
-      <form [formGroup]="bookForm" (ngSubmit)="onSubmit(bookForm.value)">
+      <form [formGroup]="editForm" (ngSubmit)="onSubmit(editForm.value)">
         <input type="file" (change)="handleFileInput($event)">
         <img *ngIf="imageUrl" [src]="imageUrl" width="200" height="200" alt="Image Preview">
         <ion-item>
           <ion-label position="floating">Title</ion-label>
           <ion-input formControlName="Title" type="type" placeholder="Enter Title"></ion-input>
         </ion-item>
-        <div *ngIf="bookForm.controls['Title'].invalid && bookForm.controls['Title'].touched"
+        <!-- <div *ngIf="bookForm.controls['Title'].invalid && bookForm.controls['Title'].touched"
           class="alert alert-danger" color="danger">
           Title required*
-        </div>
+        </div> -->
         <ion-item>
           <ion-label position="floating">Price</ion-label>
           <ion-input formControlName="Price" type="number" placeholder="Enter Price"></ion-input>
         </ion-item>
-        <div *ngIf="bookForm.controls['Price'].invalid && bookForm.controls['Price'].touched"
+        <!-- <div *ngIf="bookForm.controls['Price'].invalid && bookForm.controls['Price'].touched"
           class="alert alert-danger" color="danger">
           Price required*
-        </div>
+        </div> -->
         <ion-item>
           <ion-label position="floating">Author </ion-label>
           <ion-input formControlName="Author" type="type" placeholder="Enter Author  Name "></ion-input>
         </ion-item>
-        <div *ngIf="bookForm.controls['Author'].invalid && bookForm.controls['Author'].touched"
+        <!-- <div *ngIf="bookForm.controls['Author'].invalid && bookForm.controls['Author'].touched"
           class="alert alert-danger" color="danger">
           Author required*
-        </div>
-        <ion-button expand="full" type="submit" >Submit</ion-button>
+        </div> -->
+        <ion-button expand="full" type="submit">Submit</ion-button>
       </form>
     </ion-card-content>
   </ion-card>
 </ion-content>
+

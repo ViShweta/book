@@ -8,22 +8,20 @@
     </ion-col>
   </ion-toolbar>
 </ion-header>
-
 <ion-content [fullscreen]="true">
   <ion-searchbar [debounce]="1000" (ionInput)="handleInput($event)"></ion-searchbar>
-  
-  <!-- <ng-container *ngIf="showbook.length == 0">
-    <p>Author not found</p>
-  </ng-container> -->
-
-  <ion-card *ngFor="let book of showbook"(click)="goTo(book)">
+  <ion-card *ngFor="let book of showbook; let i = index" (click)="goTo(book)">
     <ion-card-header>
       <ion-card-title>{{ book.Title }}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
       <p>Author: {{ book.Author }}</p>
       <p>Price: {{ book.Price }}</p>
+      <img [src]="book.imageData" alt="Book Cover">
     </ion-card-content>
+    <ion-button (click)="deleteBook(i)">Delete</ion-button>
+    <ion-button (click)="goToEdit(book)">Edit</ion-button>
   </ion-card>
 </ion-content>
+
 

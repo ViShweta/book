@@ -48,6 +48,15 @@ export class HomePage {
     this.route.navigate(['/details'], { queryParams });
   }
 
+
+  goToEdit(book: any) {
+    console.log(book);
+    const queryParams = {
+      selectedBook: JSON.stringify(book) 
+    };
+    this.route.navigate(['/editbook'], { queryParams });
+  }
+
   async presentActionSheet() {
     const actionSheet = await this.actionSheetCtrl.create({
       buttons: [
@@ -71,6 +80,7 @@ export class HomePage {
             this.route.navigate(['/login']);
           }
         },
+      
 
         {
           text: 'Cancel',
@@ -85,7 +95,10 @@ export class HomePage {
     await actionSheet.present();
   }
 
+  deleteBook(index: number) {
+    this.showbook.splice(index, 1); 
+    localStorage.setItem('AllBooks', JSON.stringify(this.showbook)); 
 
-
+  }
 
 }

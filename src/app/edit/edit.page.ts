@@ -16,11 +16,15 @@ export class EditPage implements OnInit {
       firstName: new FormControl(''),
       lastName: new FormControl(''),
       email: new FormControl(''),
-      password:new FormControl('')
+      password: new FormControl(''),
     });
   }
 
   ngOnInit() {
+    this.viewAll();
+  }
+
+  ionViewWillEnter() {
     this.viewAll();
   }
 
@@ -32,24 +36,33 @@ export class EditPage implements OnInit {
         firstName: this.userData['firstName'],
         lastName: this.userData['lastName'],
         email: this.userData['email'],
-        password:this.userData['password'],
+        password: this.userData['password'],
       });
     });
   }
 
   onSubmit() {
     console.log('Form submit:', this.editForm.value);
-    const userList = JSON.parse(localStorage.getItem('userList') as any );
+    const userList = JSON.parse(localStorage.getItem('userList') as any);
     const index = userList.findIndex((user: any) => user.email == this.userData.email);
     if (index > -1) {
       userList[index] = {
         firstName: this.editForm.value.firstName,
         lastName: this.editForm.value.lastName,
         email: this.editForm.value.email,
-        password:this.editForm.value.password
+        password: this.editForm.value.password,
       };
       localStorage.setItem('userList', JSON.stringify(userList));
-    this.router.navigate(['/']);
+      const loggedInUser = JSON.parse(localStorage.getItem('LoginUser') as any);
+      if (loggedInUser && loggedInUser.email == this.userData.email) {
+        loggedInUser.firstName = this.editForm.value.firstName;
+        loggedInUser.lastName = this.editForm.value.lastName;
+        loggedInUser.email = this.editForm.value.email;
+        loggedInUser.password = this.editForm.value.password;
+        localStorage.setItem('LoginUser', JSON.stringify(loggedInUser));
+      }
+
+      this.router.navigate(['/myprofile']);
     }
   }
 }

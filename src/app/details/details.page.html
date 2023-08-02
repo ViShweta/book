@@ -17,8 +17,8 @@
     <ion-card-content>
       <p>Author: {{ book.Author }}</p>
       <p>Price: {{ book.Price }}</p>
+      <img [src]="book.imageData" alt="Book Cover">
     </ion-card-content>
     <ion-button (click)="addToCart(book)">Add To Cart</ion-button>
-   
   </ion-card>
 </ion-content>
